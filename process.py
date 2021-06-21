@@ -30,6 +30,7 @@ def recommend(id):
     n_items = consumertxn['item_id'].nunique()
     n_users = consumertxn['consumer_id'].nunique()
 
+    print(n_items)
 
     consumertxn_train, consumertxn_test = train_test_split(consumertxn, test_size=0.30, random_state=31)
 
@@ -88,8 +89,10 @@ def recommend(id):
     ## Already watched contents for user index 117
     alreadyWatchedItems = consumertxn[(consumertxn['consumer_id']==data_matrix.index[consumerid]) & (consumertxn['interaction_type']=='content_watched')]['item_id']
 
+    print(alreadyWatchedItems)
     ##  top 10 news for customer id -8078450058314350213 - 
     ## This can be shown in new section for Iprint containing top 10 recommendation customized for user index 117
     ## only show valid contents and new ones
     recom_list  = merged_user[(merged_user['interaction_type']!='content_pulled_out')&(~merged_user['item_id'].isin(alreadyWatchedItems))]['title'].values
+    print(recom_list)
     return list(recom_list)[1:11]
