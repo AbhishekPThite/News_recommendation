@@ -18,10 +18,10 @@ def convert(val):
 def recommend(id): 
 
     ## Import consumer transactions
-    consumertxn = pd.read_csv('data/consumer_transanctions.csv')
+    consumertxn = pd.read_csv('consumer_transanctions.csv')
 
     ## Import platform content master
-    platformcontent = pd.read_csv('data/platform_content.csv')
+    platformcontent = pd.read_csv('platform_content.csv')
 
     ## add rating column
     consumertxn['rating'] = consumertxn['interaction_type'].apply(convert)
